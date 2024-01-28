@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,7 +9,24 @@ import {
   View,
 } from 'react-native';
 
+type rusync = {
+  game: string;
+  market: string;
+  price: string[];
+  games: string;
+};
+
 const App = () =>  {
+  const [games, setGames] = useState<rusync[]>([]);
+
+  useEffect(() => {
+    fetch(`http://192.168.0.117:3000/games`)
+        .then(response => response.json())
+        .then(data => {
+          setGames(data.games);})
+        .catch(error => console.error(error));
+  }, []);
+
   return (
       <SafeAreaView style={styles.Container}>
         <StatusBar barStyle="default"/>
@@ -20,21 +37,17 @@ const App = () =>  {
         </View>
         <ScrollView>
           <View style={styles.mainContainer}>
+            {games.map((game_name) => (
             <View style={styles.gameContainer}>
               <View style={styles.gameImageContainer} >
                 <Image source={require("./Assets/Posters/poster_Resident_Evil.jpeg")} style={styles.gameImage}/>
               </View>
               <View style={styles.gameNameContainer}>
-                <Text style={styles.gameNameText}> Resident Evil 4 </Text>
+                <Text style={styles.gameNameText}> {game_name.game} </Text>
               </View>
-              <Text style={styles.priceText}> от 1000 ₽</Text>
+              <Text style={styles.priceText}>  </Text>
             </View>
-            <View style={styles.gameContainer}>
-            </View>
-            <View style={styles.gameContainer}>
-            </View>
-            <View style={styles.gameContainer}>
-            </View>
+          ))}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -86,8 +99,12 @@ const styles = StyleSheet.create({
   },
   gameNameContainer: {
     height: 35,
-    width: '100%',
+    width: '90%',
     justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: 'blue',
+    alignSelf: 'center',
+    marginBottom: 5,
   },
   gameImage: {
     height: '100%',
