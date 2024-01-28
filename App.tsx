@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 
 type rusync = {
-  game: string;
+  aid: number,
+  game_name: string;
   market: string;
   price: string[];
   games: string;
@@ -37,15 +38,15 @@ const App = () =>  {
         </View>
         <ScrollView>
           <View style={styles.mainContainer}>
-            {games.map((game_name) => (
-            <View style={styles.gameContainer}>
+            {games.map((game, index) => (
+            <View key={index} style={styles.gameContainer}>
               <View style={styles.gameImageContainer} >
                 <Image source={require("./Assets/Posters/poster_Resident_Evil.jpeg")} style={styles.gameImage}/>
               </View>
               <View style={styles.gameNameContainer}>
-                <Text style={styles.gameNameText}> {game_name.game} </Text>
+                <Text style={styles.gameNameText}> {game.game_name} </Text>
               </View>
-              <Text style={styles.priceText}>  </Text>
+              <Text style={styles.priceText}> {game.aid} </Text>
             </View>
           ))}
           </View>
