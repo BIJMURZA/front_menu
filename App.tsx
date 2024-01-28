@@ -1,12 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -17,101 +9,74 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () =>  {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+      <SafeAreaView style={styles.Container}>
+        <StatusBar barStyle="default"/>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}> ≡ </Text>
+          <Text style={styles.headerText}> RUSYNC </Text>
+          <Text style={styles.headerText}> SEARCH </Text>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        <ScrollView>
+          <View style={styles.mainContainer}>
+            <View style={styles.gameContainer}>
+              <Text>Hello</Text>
+            </View>
+            <View style={styles.gameContainer}>
+              <Text>Hello</Text>
+            </View>
+            <View style={styles.gameContainer}>
+              <Text>Hello</Text>
+            </View>
+            <View style={styles.gameContainer}>
+              <Text>Hello</Text>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  headerContainer: {
+    flexDirection: 'row',
+    height: 40,
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'black',
+    padding: 10,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
+  headerText: {
+    color: 'white',
     fontSize: 18,
-    fontWeight: '400',
   },
-  highlight: {
-    fontWeight: '700',
+  Container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#c0c0c0',
+  },
+  mainContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
+    justifyContent: 'space-between',
+  },
+  gameContainer: {
+    height: 175,
+    width: 115,
+    borderRadius: 15,
+    borderColor: 'red',
+    borderWidth: 1,
+    backgroundColor: 'green',
+    marginRight: 10,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  gameImage: {
+
   },
 });
 
