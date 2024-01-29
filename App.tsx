@@ -15,6 +15,7 @@ type rusync = {
   market: string;
   price: string[];
   games: string;
+  minPrice: string;
 };
 
 const App = () =>  {
@@ -46,7 +47,7 @@ const App = () =>  {
               <View style={styles.gameNameContainer}>
                 <Text style={styles.gameNameText}> {game.game_name} </Text>
               </View>
-              <Text style={styles.priceText}> {game.aid} </Text>
+              <Text style={styles.priceText}> {game.minPrice} </Text>
             </View>
           ))}
           </View>
@@ -83,12 +84,12 @@ const styles = StyleSheet.create({
   },
   gameContainer: {
     height: 270,
-    width: 160,
+    width: 180,
     borderRadius: 15,
     backgroundColor: '#ebebeb',
-    marginRight: 10,
+    marginRight: 5,
     marginBottom: 10,
-    marginLeft: 10,
+    marginLeft: 5,
     marginTop: 10,
     overflow: 'hidden',
   },
