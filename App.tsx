@@ -20,7 +20,6 @@ type rusync = {
 
 const App = () =>  {
   const [games, setGames] = useState<rusync[]>([]);
-
   useEffect(() => {
     fetch(`http://192.168.0.117:3000/games`)
         .then(response => response.json())
@@ -28,6 +27,7 @@ const App = () =>  {
           setGames(data.games);})
         .catch(error => console.error(error));
   }, []);
+
 
   return (
       <SafeAreaView style={styles.Container}>
@@ -42,7 +42,7 @@ const App = () =>  {
             {games.map((game, index) => (
             <View key={index} style={styles.gameContainer}>
               <View style={styles.gameImageContainer} >
-                <Image source={require("./Assets/Posters/poster_Resident_Evil.jpeg")} style={styles.gameImage}/>
+                <Image source={require("./Assets/Posters/{aid}.jpeg")} style={styles.gameImage}/>
               </View>
               <View style={styles.gameNameContainer}>
                 <Text style={styles.gameNameText}> {game.game_name} </Text>
